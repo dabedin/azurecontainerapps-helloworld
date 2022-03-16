@@ -26,7 +26,7 @@ jobs:
       - name: Log in to container registry
         uses: docker/login-action@v1
         with:
-          registry: e0ba535e7b3546f2877f4d7baffb016f.azurecr.io
+          registry: dbacahelloacr.azurecr.io
           username: ${{ secrets.REGISTRY_USERNAME }}
           password: ${{ secrets.REGISTRY_PASSWORD }}
 
@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: e0ba535e7b3546f2877f4d7baffb016f.azurecr.io/db-acahello-ca:${{ github.sha }}
+          tags: dbacahelloacr.azurecr.io/db-acahello-ca:${{ github.sha }}
           context: ./
 
 
@@ -56,4 +56,4 @@ jobs:
             echo "Installing containerapp extension"
             az extension add --source https://workerappscliextension.blob.core.windows.net/azure-cli-extension/containerapp-0.2.0-py2.py3-none-any.whl --yes
             echo "Starting Deploying"
-            az containerapp update -n db-acahello-ca -g db-acahello-rg -i e0ba535e7b3546f2877f4d7baffb016f.azurecr.io/db-acahello-ca:${{ github.sha }} --registry-login-server e0ba535e7b3546f2877f4d7baffb016f.azurecr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
+            az containerapp update -n db-acahello-ca -g db-acahello-rg -i dbacahelloacr.azurecr.io/db-acahello-ca:${{ github.sha }} --registry-login-server dbacahelloacr.azurecr.io --registry-username  ${{ secrets.REGISTRY_USERNAME }} --registry-password ${{ secrets.REGISTRY_PASSWORD }} --debug
