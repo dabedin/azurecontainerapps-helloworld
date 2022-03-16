@@ -6,11 +6,9 @@ on:
   push:
     branches: 
     - main
-    paths:
-    - './**'
-
- 
-
+    paths-ignore: 
+      - '.github/workflows/**'
+      
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -35,7 +33,6 @@ jobs:
           push: true
           tags: dbacahelloacr.azurecr.io/db-acahello-ca:${{ github.sha }}
           context: ./
-
 
   deploy:
     runs-on: ubuntu-latest
