@@ -9,8 +9,7 @@ on:
     paths:
     - './**'
 
-  # Allow mannually trigger 
-  workflow_dispatch:      
+ 
 
 jobs:
   build:
